@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
-import AppBar from "./view/AppBar";
+import AppBar from "./components/appbar/index";
 import { connect } from "react-redux";
 import { SnackbarProvider } from "notistack";
 import { get } from "lodash";
