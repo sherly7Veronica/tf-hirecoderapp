@@ -26,6 +26,7 @@ import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import { useSpring, animated } from "react-spring";
 import Modal from "@mui/material/Modal";
+import Testimonials from "../components/testimonials";
 
 const columns = [
   { id: "id", label: "Id", minWidth: 170 },
@@ -370,6 +371,7 @@ function TaskPage({ configTaskData, taskData }) {
           </Box>
         </Fade>
       </Modal>
+      <Testimonials></Testimonials>
     </div>
   );
 }
