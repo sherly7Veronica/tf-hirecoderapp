@@ -9,6 +9,7 @@ import Home from "./view/Home";
 import SignIn from "./view/SignIn";
 import User from "./view/User";
 import { useHistory } from "react-router-dom";
+import Footer from "./components/footer";
 
 const useStyles = makeStyles({});
 
@@ -40,6 +41,7 @@ function App({ isLoggedIn }) {
             <Route exact from="/" render={(props) => <SignIn {...props} />} />
           </Switch>
         )}
+        <Footer />
       </SnackbarProvider>
     </div>
   );
