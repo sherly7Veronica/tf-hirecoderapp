@@ -26,6 +26,7 @@ import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import { useSpring, animated } from "react-spring";
 import Modal from "@mui/material/Modal";
+import Testimonials from "../components/testimonials";
 
 const columns = [
   { id: "id", label: "Id", minWidth: 170 },
@@ -155,7 +156,7 @@ function TaskPage({ configTaskData, taskData }) {
   }, [taskData]);
 
   return (
-    <div style={{ marginTop: "5%" }}>
+    <><div style={{ marginTop: "5%" }}>
       <div style={{ justifyContent: "center", display: "flex" }}>
         <Paper sx={{ width: windowWidth ? "80%" : "95%", overflow: "hidden" }}>
           <TableContainer sx={{ maxHeight: 440 }}>
@@ -219,8 +220,7 @@ function TaskPage({ configTaskData, taskData }) {
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
+            onRowsPerPageChange={handleChangeRowsPerPage} />
         </Paper>
       </div>
       <div>
@@ -293,8 +293,7 @@ function TaskPage({ configTaskData, taskData }) {
                           helperText={errors.title}
                           error={errors.title}
                           label="Title"
-                          name="title"
-                        />
+                          name="title" />
                       </Grid>
                       <Grid xs={5} item>
                         <Field
@@ -304,8 +303,7 @@ function TaskPage({ configTaskData, taskData }) {
                           helperText={errors.description}
                           id="description"
                           label="Description"
-                          name="description"
-                        />
+                          name="description" />
                       </Grid>
                       <Grid xs={5} item>
                         <Field
@@ -316,8 +314,7 @@ function TaskPage({ configTaskData, taskData }) {
                           helperText={errors.email}
                           error={errors.email}
                           label="Email"
-                          name="email"
-                        />
+                          name="email" />
                       </Grid>
                       <Grid xs={5} item>
                         <Field
@@ -330,23 +327,16 @@ function TaskPage({ configTaskData, taskData }) {
                           helperText={errors.range}
                           type="number"
                           label="Range"
-                          name="range"
-                        />
+                          name="range" />
                       </Grid>
                       <Grid xs={10} item>
                         <FormGroup>
                           <FormControlLabel
-                            control={
-                              <Checkbox
-                                checked={values.valid === true}
-                                onChange={() =>
-                                  setFieldValue("valid", !values.valid)
-                                }
-                                defaultChecked
-                              />
-                            }
-                            label="Valid"
-                          />
+                            control={<Checkbox
+                              checked={values.valid === true}
+                              onChange={() => setFieldValue("valid", !values.valid)}
+                              defaultChecked />}
+                            label="Valid" />
                         </FormGroup>
                       </Grid>
                       <Grid style={{ paddingTop: "10%" }} xs={10} item>
@@ -361,7 +351,7 @@ function TaskPage({ configTaskData, taskData }) {
                     </Grid>
                   </Form>
                 );
-              }}
+              } }
             </Formik>
             <Typography
               id="spring-modal-description"
@@ -370,7 +360,7 @@ function TaskPage({ configTaskData, taskData }) {
           </Box>
         </Fade>
       </Modal>
-    </div>
+    </div><Testimonials></Testimonials></>
   );
 }
 
