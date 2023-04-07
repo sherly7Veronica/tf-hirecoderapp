@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import {Grid,Box } from '@mui/material';
+import {Grid,Box,Typography } from '@mui/material';
 import GridItem from "../gridItem";
 
 import "./index.css"
@@ -192,21 +192,48 @@ function Testimonials() {
     const testData = Object.values(testimonialsData);
     
   return (
-    <Box sx={{ m:2 }}>
-      <Grid container rowSpacing={0} columnSpacing={0}>
-        {
-           
-           testData?.map((data,i) => {
-            return (
-            
-             <GridItem data={data} key={i}></GridItem> 
-           
-            )
-            
-        })
-        }
-      </Grid>
-    </Box>
+    <>
+      <div style={{ position: 'relative' }}>
+            <div
+                style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: "25px",
+                    right: "25px",
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                }}
+            >
+                <Typography 
+                variant="h6" 
+                align="center" 
+                color="#fff"                    
+                font-size="30px"
+                padding-left="10px" 
+                padding-top="23px!important"
+                margin="0px!important"
+                height="147px"
+                margin-left="-25px !important">
+                Pay only $7500/month for the coder which will cost you only $35/hr <p>and cut your cost by 50%</p>
+                <p>Compare Real Cost of Employees Vs Consultants</p>
+                </Typography>
+            </div>
+            <Box sx={{ m:2 }}>
+                <Grid container rowSpacing={0} columnSpacing={0}>
+                    {
+                    
+                    testData?.map((data,i) => {
+                        return (
+                        
+                        <GridItem data={data} key={i}></GridItem> 
+                    
+                        )
+                        
+                    })
+                    }
+                </Grid>
+            </Box>
+      </div>
+    </>
   );
 }
 
