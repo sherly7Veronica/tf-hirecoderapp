@@ -5,6 +5,9 @@ import AppBar from "./components/appbar/index";
 import { connect } from "react-redux";
 import { SnackbarProvider } from "notistack";
 import { get } from "lodash";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
 import Home from "./view/Home";
 import SignIn from "./view/SignIn";
 import UpdateStore from "./hardCodedData/updateStore";
@@ -13,6 +16,35 @@ import { useHistory } from "react-router-dom";
 import Footer from "./components/footer";
 
 const useStyles = makeStyles({});
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: "#000"
+    },
+    secondary: {
+      main: "#fff"
+    }
+  },
+  typography: {
+    fontFamily: 'Raleway, Arial',
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: `
+        @font-face {
+          font-family: 'Raleway';
+          font-style: normal;
+          font-display: swap;
+          font-weight: 400;
+          src: local('Raleway'), local('Raleway-Regular'),format('woff2');
+          unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
+        }
+      `,
+    },
+  },
+});
 
 function App({ isLoggedIn }) {
   let history = useHistory();
@@ -26,6 +58,8 @@ function App({ isLoggedIn }) {
 
   return (
     <div className={classes.container}>
+      <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
       <SnackbarProvider
         maxSnack={5}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
@@ -46,6 +80,7 @@ function App({ isLoggedIn }) {
         )}
         <Footer />
       </SnackbarProvider>
+      </ThemeProvider>
     </div>
   );
 }

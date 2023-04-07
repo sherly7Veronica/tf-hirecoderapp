@@ -1,14 +1,17 @@
 import React from "react";
 import { makeStyles } from "@mui/styles";
-import style from "./style";
 import { Grid } from "@mui/material";
-import footerlogo from "../../assets/Footerlogo.png";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GoogleIcon from "@mui/icons-material/Google";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { Link } from "react-router-dom";
+import Divider from '@mui/material/Divider';
+import footerlogo from "../../assets/Footerlogo.png";
+import style from "./style";
+
+
 
 const useStyles = makeStyles(style);
 const FOOTER_CONTENT = [
@@ -96,6 +99,7 @@ function Footer() {
           </Grid>
         </Grid>
       </div>
+      <Divider />
       <Grid item xs={12} sm={12} container className={classes.copyRight}>
         <Grid item xs={12} md={6} sm={6}>
           <p>© Copyright 2017 Hirecoder, INC.</p>

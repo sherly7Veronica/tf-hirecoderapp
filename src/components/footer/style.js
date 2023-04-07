@@ -1,19 +1,20 @@
-const footerLayout = {
+const footerLayout = (theme) =>({
     container: {
       display: 'flex',
       minHeight: '100px',
       justifyContent: 'space-between',
       marginTop: "4rem",
       padding: "0.75rem",
-      backgroundColor:"rgb(211, 212, 212)",
+      backgroundColor: theme.palette.primary.main,
       paddingBottom:"2rem",
-      fontSize: "13px"
+      fontSize: "13px",
+      color: theme.palette.secondary.main
     },
     // style for form container
     copyRight: {
         minHeight: "100px",
-        backgroundColor:"#1976d2",
-        color: "white",
+        backgroundColor:theme.palette.primary.main,
+        color: theme.palette.secondary.main,
         paddingBottom: "20px",
         textAlign: "center",
     },
@@ -33,8 +34,8 @@ const footerLayout = {
     anchor: {
         '& >a': {
             textDecoration: "none",
-            color: "black",
+            color: theme.palette.secondary.main,
         }
     }
-  };
+  });
 export default footerLayout;
