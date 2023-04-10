@@ -16,6 +16,8 @@ import Validations from "../helpers/Validations";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { loginStatus, addNewUser, setCurrentUserData } from "../action/user";
 // import data from "../hardCoded Data/data.json";
+import { makeStyles } from "@mui/styles";
+import style from "./style";
 
 function OtherInfo(props) {
   return (
@@ -33,7 +35,10 @@ function OtherInfo(props) {
 }
 
 const theme = createTheme();
+const useStyles = makeStyles(style);
+
 function SignIn({ userList, loginStatus, addNewUser, setCurrentUserData }) {
+  const classes = useStyles();
   const [componentState, setComponentState] = React.useState("login");
   const { enqueueSnackbar } = useSnackbar();
 
@@ -47,7 +52,7 @@ function SignIn({ userList, loginStatus, addNewUser, setCurrentUserData }) {
   };
 
   const onSignIn = (values) => {
-    
+
     userList.map((user) => {
       if (user.userName === values.userName) {
         if (user.password === values.password) {
@@ -90,12 +95,13 @@ function SignIn({ userList, loginStatus, addNewUser, setCurrentUserData }) {
   };
 
   return (
-    <div style={{ height: "100vh" }}>
+    <div className={classes.container}>
       <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="sm">
+        <Container component="main" maxWidth="sm" >
           <CssBaseline />
           {componentState === "login" ? (
             <Box
+              className={classes.container}
               sx={{
                 marginTop: 8,
                 display: "flex",
@@ -156,6 +162,7 @@ function SignIn({ userList, loginStatus, addNewUser, setCurrentUserData }) {
                             fullWidth
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
+
                           >
                             Login
                           </Button>

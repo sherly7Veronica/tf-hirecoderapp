@@ -46,7 +46,7 @@ function User({
   };
 
   return (
-    <div style={{ marginTop: "10%" }}>
+    <div style={{ backgroundColor: "red" }}>
       <div style={{ justifyContent: "center", display: "flex" }}>
         <Paper
           elevation={3}
