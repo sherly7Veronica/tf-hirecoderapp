@@ -95,276 +95,285 @@ function SignIn({ userList, loginStatus, addNewUser, setCurrentUserData }) {
   };
 
   return (
-    <div className={classes.container}>
-      <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="sm" >
-          <CssBaseline />
-          {componentState === "login" ? (
-            <Box
-              className={classes.container}
-              sx={{
-                marginTop: 8,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                background: "#f3f2ff",
-                borderRadius: "2%",
-                padding: "10%",
-              }}
-            >
-              <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                <LockOutlinedIcon />
-              </Avatar>
-              <Typography component="h1" variant="h5">
-                Login
-              </Typography>
-              <Box sx={{ mt: 3 }}>
-                <Formik
-                  initialValues={{ userName: "", password: "" }}
-                  enableReinitialize={true}
-                  onSubmit={onSignIn}
-                >
-                  {() => {
-                    return (
-                      <Form>
-                        <Grid container spacing={2}>
-                          <Grid item xs={12}>
-                            <Field
-                              as={TextField}
-                              fullWidth
-                              id="userName"
-                              label="User Name"
-                              name="userName"
-                              autoComplete="userName"
-                            />
-                          </Grid>
-                          <Grid item xs={12}>
-                            <Field
-                              as={TextField}
-                              fullWidth
-                              name="password"
-                              label="Password"
-                              type="password"
-                              id="password"
-                              autoComplete="new-password"
-                            />
-                          </Grid>
-                        </Grid>
-                        <div
-                          style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                          }}
-                        >
-                          <Button
-                            type="submit"
+    <>
+      <Container maxWidth="sm">{
+        componentState === "login" ? (
+          <Box
+            className={classes.container}
+            sx={{
+              marginTop: 8,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              background: "#f3f2ff",
+              borderRadius: "2%",
+              padding: "10%",
+            }}
+          >
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Login
+            </Typography>
+            <Box sx={{ mt: 3 }}  >
+              <Formik
+                initialValues={{ userName: "", password: "" }}
+                enableReinitialize={true}
+                onSubmit={onSignIn}
+                style={{ backgroundColor: "blue" }}
+              >
+                {() => {
+                  return (
+                    <Form >
+                      <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                          <Field
+                            as={TextField}
                             fullWidth
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
+                            id="userName"
+                            label="User Name"
+                            name="userName"
+                            autoComplete="userName"
 
-                          >
-                            Login
-                          </Button>
-                          <Typography>Or Create a New Account</Typography>
-                          <Button
-                            onClick={switchComponentState}
-                            data-id={"signUp"}
-                            fullWidth
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
-                          >
-                            Sign Up
-                          </Button>
-                        </div>
-                      </Form>
-                    );
-                  }}
-                </Formik>
-              </Box>
-            </Box>
-          ) : (
-            <Box
-              sx={{
-                marginTop: 8,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                background: "#f3f2ff",
-                borderRadius: "2%",
-                padding: "10%",
-              }}
-            >
-              <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                <LockOutlinedIcon />
-              </Avatar>
-              <Typography component="h1" variant="h5">
-                Sign up
-              </Typography>
-              <Box sx={{ mt: 3 }}>
-                <Formik
-                  initialValues={{
-                    firstName: "",
-                    lastName: "",
-                    userName: "",
-                    password: "",
-                    confirmPassword: "",
-                  }}
-                  enableReinitialize={true}
-                  onSubmit={onSignUp}
-                  validationSchema={Validations.signUp}
-                >
-                  {() => {
-                    return (
-                      <Form>
-                        <Grid container spacing={2}>
-                          <Grid item xs={12} sm={6}>
-                            <Field
-                              as={TextField}
-                              autoComplete="given-name"
-                              name="firstName"
-                              fullWidth
-                              id="firstName"
-                              label="First Name"
-                              autoFocus
-                            />
-                            <ErrorMessage name="firstName">
-                              {(msg) => (
-                                <Typography
-                                  component="span"
-                                  color="error"
-                                  variant="body2"
-                                >
-                                  {msg}
-                                </Typography>
-                              )}
-                            </ErrorMessage>
-                          </Grid>
-                          <Grid item xs={12} sm={6}>
-                            <Field
-                              as={TextField}
-                              fullWidth
-                              id="lastName"
-                              label="Last Name"
-                              name="lastName"
-                              autoComplete="family-name"
-                            />
-                            <ErrorMessage name="lastName">
-                              {(msg) => (
-                                <Typography
-                                  component="span"
-                                  color="error"
-                                  variant="body2"
-                                >
-                                  {msg}
-                                </Typography>
-                              )}
-                            </ErrorMessage>
-                          </Grid>
-                          <Grid item xs={12}>
-                            <Field
-                              as={TextField}
-                              fullWidth
-                              name="userName"
-                              label="User Name"
-                              type="text"
-                              id="text"
-                              autoComplete="userName"
-                            />
-                            <ErrorMessage name="userName">
-                              {(msg) => (
-                                <Typography
-                                  component="span"
-                                  color="error"
-                                  variant="body2"
-                                >
-                                  {msg}
-                                </Typography>
-                              )}
-                            </ErrorMessage>
-                          </Grid>
-                          <Grid item xs={12}>
-                            <Field
-                              as={TextField}
-                              fullWidth
-                              name="password"
-                              label="Password"
-                              type="password"
-                              id="password"
-                              autoComplete="new-password"
-                            />
-                            <ErrorMessage name="password">
-                              {(msg) => (
-                                <Typography
-                                  component="span"
-                                  color="error"
-                                  variant="body2"
-                                >
-                                  {msg}
-                                </Typography>
-                              )}
-                            </ErrorMessage>
-                          </Grid>
-                          <Grid item xs={12}>
-                            <Field
-                              as={TextField}
-                              fullWidth
-                              name="confirmPassword"
-                              label="Confirm Password"
-                              type="password"
-                              id="confirmPassword"
-                              autoComplete="new-password"
-                            />
-                            <ErrorMessage name="confirmPassword">
-                              {(msg) => (
-                                <Typography
-                                  component="span"
-                                  color="error"
-                                  variant="body2"
-                                >
-                                  {msg}
-                                </Typography>
-                              )}
-                            </ErrorMessage>
-                          </Grid>
+
+                          />
                         </Grid>
-                        <div
-                          style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                          }}
+                        <Grid item xs={12}>
+                          <Field
+                            as={TextField}
+                            fullWidth
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            autoComplete="new-password"
+
+                          />
+                        </Grid>
+                      </Grid>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Button
+                          type="submit"
+                          fullWidth
+                          variant="contained"
+                          sx={{ mt: 3, mb: 2 }}
+                          className={classes.bg}
+
                         >
-                          <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
-                          >
-                            Sign Up
-                          </Button>
-                          <Typography>Or Have An Account</Typography>
-                          <Button
-                            onClick={switchComponentState}
-                            fullWidth
-                            data-id={"login"}
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
-                          >
-                            Login In
-                          </Button>
-                        </div>
-                      </Form>
-                    );
-                  }}
-                </Formik>
-              </Box>
+                          Login
+                        </Button>
+                        <Typography>Or Create a New Account</Typography>
+                        <Button
+                          onClick={switchComponentState}
+                          data-id={"signUp"}
+                          fullWidth
+                          variant="contained"
+                          sx={{ mt: 3, mb: 2 }}
+                          className={classes.bg}
+                        >
+                          Sign Up
+                        </Button>
+                      </div>
+                    </Form>
+                  );
+                }}
+              </Formik>
             </Box>
-          )}
-          <OtherInfo sx={{ mt: 5 }} />
-        </Container>
-      </ThemeProvider>
-    </div>
+          </Box>
+        ) : (
+          <Box
+            className={classes.container}
+            sx={{
+              marginTop: 8,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              background: "#f3f2ff",
+              borderRadius: "2%",
+              padding: "10%",
+            }}
+          >
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign up
+            </Typography>
+            <Box sx={{ mt: 3 }}>
+              <Formik
+                initialValues={{
+                  firstName: "",
+                  lastName: "",
+                  userName: "",
+                  password: "",
+                  confirmPassword: "",
+                }}
+                enableReinitialize={true}
+                onSubmit={onSignUp}
+                validationSchema={Validations.signUp}
+              >
+                {() => {
+                  return (
+                    <Form>
+                      <Grid container spacing={2}>
+                        <Grid item xs={12} sm={6}>
+                          <Field
+                            as={TextField}
+                            autoComplete="given-name"
+                            name="firstName"
+                            fullWidth
+                            id="firstName"
+                            label="First Name"
+                            autoFocus
+                          />
+                          <ErrorMessage name="firstName">
+                            {(msg) => (
+                              <Typography
+                                component="span"
+                                color="error"
+                                variant="body2"
+                              >
+                                {msg}
+                              </Typography>
+                            )}
+                          </ErrorMessage>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                          <Field
+                            as={TextField}
+                            fullWidth
+                            id="lastName"
+                            label="Last Name"
+                            name="lastName"
+                            autoComplete="family-name"
+                          />
+                          <ErrorMessage name="lastName">
+                            {(msg) => (
+                              <Typography
+                                component="span"
+                                color="error"
+                                variant="body2"
+                              >
+                                {msg}
+                              </Typography>
+                            )}
+                          </ErrorMessage>
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Field
+                            as={TextField}
+                            fullWidth
+                            name="userName"
+                            label="User Name"
+                            type="text"
+                            id="text"
+                            autoComplete="userName"
+                          />
+                          <ErrorMessage name="userName">
+                            {(msg) => (
+                              <Typography
+                                component="span"
+                                color="error"
+                                variant="body2"
+                              >
+                                {msg}
+                              </Typography>
+                            )}
+                          </ErrorMessage>
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Field
+                            as={TextField}
+                            fullWidth
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            autoComplete="new-password"
+                          />
+                          <ErrorMessage name="password">
+                            {(msg) => (
+                              <Typography
+                                component="span"
+                                color="error"
+                                variant="body2"
+                              >
+                                {msg}
+                              </Typography>
+                            )}
+                          </ErrorMessage>
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Field
+                            as={TextField}
+                            fullWidth
+                            name="confirmPassword"
+                            label="Confirm Password"
+                            type="password"
+                            id="confirmPassword"
+                            autoComplete="new-password"
+                          />
+                          <ErrorMessage name="confirmPassword">
+                            {(msg) => (
+                              <Typography
+                                component="span"
+                                color="error"
+                                variant="body2"
+                              >
+                                {msg}
+                              </Typography>
+                            )}
+                          </ErrorMessage>
+                        </Grid>
+                      </Grid>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Button
+                          type="submit"
+                          fullWidth
+                          variant="contained"
+                          sx={{ mt: 3, mb: 2 }}
+
+                        >
+                          Sign Up
+                        </Button>
+                        <Typography>Or Have An Account</Typography>
+                        <Button
+                          onClick={switchComponentState}
+                          fullWidth
+                          data-id={"login"}
+                          variant="contained"
+                          sx={{ mt: 3, mb: 2 }}
+                          className={classes.bg}
+                        >
+                          Login In
+                        </Button>
+                      </div>
+                    </Form>
+                  );
+                }}
+              </Formik>
+            </Box>
+          </Box>
+        )
+      }
+        < OtherInfo sx={{ mt: 5 }} />
+      </Container>
+      {/* </ThemeProvider> */}
+
+    </>
   );
 }
 

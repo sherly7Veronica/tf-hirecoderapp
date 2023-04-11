@@ -14,6 +14,7 @@ import UpdateStore from "./hardCodedData/updateStore";
 import User from "./view/User";
 import { useHistory } from "react-router-dom";
 import Footer from "./components/footer";
+import style from "./style";
 
 const useStyles = makeStyles({});
 
@@ -26,6 +27,9 @@ const darkTheme = createTheme({
     secondary: {
       main: "#ffffff"
     },
+    optional: {
+      main: "#2c2b2b"
+    }
   },
   typography: {
     fontFamily: 'Raleway, Arial',
@@ -66,7 +70,7 @@ function App({ isLoggedIn }) {
           preventDuplicate
         >
           <AppBar />
-          <div style={{ minHeight: "500px", padding: "2rem 0 2rem 0", backgroundColor: "black" }}>
+          <div className={classes.container}>
             {isLoggedIn ? (
               <Switch>
                 <Route exact from="/" render={(props) => <Home {...props} />} />
